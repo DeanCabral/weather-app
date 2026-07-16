@@ -18,5 +18,9 @@ export default defineConfig([
     languageOptions: {
       globals: globals.browser,
     },
+    rules: {
+      'no-empty-pattern': 'off',
+      '@typescript-eslint/no-empty-object-type': 'off',
+    },
   },
 ])
