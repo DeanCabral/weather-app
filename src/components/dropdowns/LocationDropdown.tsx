@@ -1,13 +1,17 @@
+import type { Dispatch, SetStateAction } from 'react';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select'
 
-type Props = {}
+type Props = {
+  location: string;
+  setLocation: Dispatch<SetStateAction<string>>;
+};
 
-export default function LocationDropdown({}: Props) {
+export default function LocationDropdown({ location, setLocation }: Props) {
   return (
-    <Select>
-        <SelectTrigger className="w-[180px]">
-            <SelectValue placeholder="Theme" />
-        </SelectTrigger>
+    <Select value={location} onValueChange={(value) => value && setLocation(value)}>
+      <SelectTrigger className="w-[180px]">
+        <SelectValue placeholder="" />
+      </SelectTrigger>
         <SelectContent>
             {locations.map((city) => (
                 <SelectItem key={city} value={city}>
