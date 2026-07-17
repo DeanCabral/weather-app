@@ -15,6 +15,7 @@ import CurrentSkeleton from "./components/skeletons/CurrentSkeleton";
 import AdditionalInfoSkeletion from "./components/skeletons/AdditionalInfoSkeletion";
 import DailySkeletion from "./components/skeletons/DailySkeletion";
 import HourlySkeleton from "./components/skeletons/HourlySkeleton";
+import SidePanel from "./components/SidePanel";
 
 function App() {
 
@@ -37,36 +38,39 @@ function App() {
   console.log("coords", coords);
 
   return (
-    <div className="flex flex-col gap-8">     
-      <div className="flex gap-8">
-        <div className="flex gap-4">
-          <h1 className=" text-2xl font-semibold">Location</h1>
-          <LocationDropdown location={location} setLocation={setLocation}/>
-        </div>
-        <div className="flex gap-4">
-          <h1 className=" text-2xl font-semibold">Layers</h1>
-          <MapTypeDropdown mapType={mapType} setMapType={setMapType}/>
-        </div>      
-      </div>  
+    <>
+      <div className="flex flex-col gap-8">     
+        <div className="flex gap-8">
+          <div className="flex gap-4">
+            <h1 className=" text-2xl font-semibold">Location</h1>
+            <LocationDropdown location={location} setLocation={setLocation}/>
+          </div>
+          <div className="flex gap-4">
+            <h1 className=" text-2xl font-semibold">Layers</h1>
+            <MapTypeDropdown mapType={mapType} setMapType={setMapType}/>
+          </div>      
+        </div>  
 
-      <div className="relative">
-        <Map coords={coords} mapType={mapType} onMapClick={onMapClick}/>
-        <MapLegend mapType={mapType}/>
-      </div>  
+        <div className="relative">
+          <Map coords={coords} mapType={mapType} onMapClick={onMapClick}/>
+          <MapLegend mapType={mapType}/>
+        </div>  
 
-      <Suspense fallback={<CurrentSkeleton/>}>
-        <CurrentWeather coords={coords}/>
-      </Suspense>
-      <Suspense fallback={<HourlySkeleton/>}>
-        <HourlyForecast coords={coords}/>
-      </Suspense>
-      <Suspense fallback={<DailySkeletion/>}>
-        <DailyForecast coords={coords}/>
-      </Suspense>
-      <Suspense fallback={<AdditionalInfoSkeletion/>}>
-        <AdditionalInfo coords={coords}/>
-      </Suspense>    
-    </div>
+        <Suspense fallback={<CurrentSkeleton/>}>
+          <CurrentWeather coords={coords}/>
+        </Suspense>
+        <Suspense fallback={<HourlySkeleton/>}>
+          <HourlyForecast coords={coords}/>
+        </Suspense>
+        <Suspense fallback={<DailySkeletion/>}>
+          <DailyForecast coords={coords}/>
+        </Suspense>
+        <Suspense fallback={<AdditionalInfoSkeletion/>}>
+          <AdditionalInfo coords={coords}/>
+        </Suspense>    
+      </div>
+      <SidePanel coords={coords} />
+    </>
   )
 }
 

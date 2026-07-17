@@ -1,3 +1,4 @@
+import { AirpollutionSchema } from "./schemas/AirpollutionSchema";
 import { GeocodeSchema } from "./schemas/GeocodeSchema";
 import { OneCallSchema } from "./schemas/OneCallSchema";
 
@@ -19,4 +20,13 @@ export async function getGeoCode(location: string) {
 
    const data = await res.json();
    return GeocodeSchema.parse(data);
+}
+
+export async function getAirPollution({lat, lon}: {lat: number, lon: number}) {
+   const res = await fetch(`http://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${API_KEY}`);
+
+   if (!res.ok) throw new Error(`Air pollution request failed with status ${res.status}`);
+
+   const data = await res.json();
+   return AirpollutionSchema.parse(data);
 }
