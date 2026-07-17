@@ -26,14 +26,14 @@ export default function LocationDropdown({ location, setLocation }: Props) {
 }
 
 const locations = [
-  "New York",
-  "London",
-  "Paris",
-  "Tokyo",
+  "Barcelona",
   "Dubai",
+  "Hong Kong",
+  "London",
+  "New York",
+  "Paris",
+  "Rome",
   "Singapore",
   "Sydney",
-  "Rome",
-  "Barcelona",
-  "Hong Kong"
-]
+  "Tokyo"
+];

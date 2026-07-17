@@ -15,7 +15,7 @@ const API_KEY = import.meta.env.VITE_API_KEY;
 
 export default function Map({coords, mapType, onMapClick}: Props) {
   return (
-    <MapContainer center={[coords.lat, coords.lon]} zoom={5} style={{ height: "500px", width: "1000px", zIndex: 0 }}>
+    <MapContainer center={[coords.lat, coords.lon]} zoom={5} style={{ height: "500px", width: "700px", zIndex: 0 }}>
         <MapClick onMapClick={onMapClick} coords={coords} />
         <MapTileLayer />
         <TileLayer
